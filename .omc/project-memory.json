@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775956153064,
+  "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 2,
+      "lastAccessed": 1775956153061,
+      "keyFiles": [
+        "result.html",
+        "survey.html"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "generate_metasource_v2.py",
+      "accessCount": 4,
+      "lastAccessed": 1775974755182,
+      "type": "file"
+    },
+    {
+      "path": "generate_metasource.py",
+      "accessCount": 1,
+      "lastAccessed": 1775956188624,
+      "type": "file"
+    },
+    {
+      "path": "all_reviews.json",
+      "accessCount": 1,
+      "lastAccessed": 1775957686453,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
