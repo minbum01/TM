@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1775956153064,
+  "lastScanned": 1776050016863,
   "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
   "techStack": {
     "languages": [],
@@ -38,32 +38,38 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 2,
-      "lastAccessed": 1775956153061,
+      "lastAccessed": 1776050016859,
       "keyFiles": [
         "result.html",
         "survey.html"
       ]
+    },
+    "crawler": {
+      "path": "crawler",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1776050016859,
+      "keyFiles": [
+        "crawl_all.py",
+        "crawl_finish.py",
+        "crawl_progress.json",
+        "test_crawl.py"
+      ]
+    },
+    "plan&design": {
+      "path": "plan&design",
+      "purpose": null,
+      "fileCount": 13,
+      "lastAccessed": 1776050016859,
+      "keyFiles": [
+        "결과페이지_기획.md",
+        "결과페이지_조합기획.md",
+        "기획안.png",
+        "반응형확인.png",
+        "반응형확인2.png"
+      ]
     }
   },
-  "hotPaths": [
-    {
-      "path": "generate_metasource_v2.py",
-      "accessCount": 4,
-      "lastAccessed": 1775974755182,
-      "type": "file"
-    },
-    {
-      "path": "generate_metasource.py",
-      "accessCount": 1,
-      "lastAccessed": 1775956188624,
-      "type": "file"
-    },
-    {
-      "path": "all_reviews.json",
-      "accessCount": 1,
-      "lastAccessed": 1775957686453,
-      "type": "file"
-    }
-  ],
+  "hotPaths": [],
   "userDirectives": []
 }
