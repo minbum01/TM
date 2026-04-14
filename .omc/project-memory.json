@@ -70,6 +70,37 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "chapter1_keywords.json",
+      "accessCount": 53,
+      "lastAccessed": 1776126785849,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 2,
+      "lastAccessed": 1776126522256,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1776125744500,
+      "type": "directory"
+    },
+    {
+      "path": "all_reviews.json",
+      "accessCount": 1,
+      "lastAccessed": 1776125750131,
+      "type": "file"
+    },
+    {
+      "path": "plan&design/수기집_시안.png",
+      "accessCount": 1,
+      "lastAccessed": 1776126528553,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
