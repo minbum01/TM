@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776050016863,
+  "lastScanned": 1776303390371,
   "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
   "techStack": {
     "languages": [],
@@ -38,7 +38,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 2,
-      "lastAccessed": 1776050016859,
+      "lastAccessed": 1776303390367,
       "keyFiles": [
         "result.html",
         "survey.html"
@@ -48,7 +48,7 @@
       "path": "crawler",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1776050016859,
+      "lastAccessed": 1776303390367,
       "keyFiles": [
         "crawl_all.py",
         "crawl_finish.py",
@@ -56,51 +56,29 @@
         "test_crawl.py"
       ]
     },
+    "each_chapter_review": {
+      "path": "each_chapter_review",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1776303390367,
+      "keyFiles": [
+        "chapter1_keywords.json"
+      ]
+    },
     "plan&design": {
       "path": "plan&design",
       "purpose": null,
-      "fileCount": 13,
-      "lastAccessed": 1776050016859,
+      "fileCount": 18,
+      "lastAccessed": 1776303390368,
       "keyFiles": [
-        "결과페이지_기획.md",
-        "결과페이지_조합기획.md",
-        "기획안.png",
-        "반응형확인.png",
-        "반응형확인2.png"
+        "hackers_stories_all6.png",
+        "수기집 설계서-2.png",
+        "수기집 설계서-4.png",
+        "수기집 설계서.png",
+        "수기집 설계서3.png"
       ]
     }
   },
-  "hotPaths": [
-    {
-      "path": "chapter1_keywords.json",
-      "accessCount": 53,
-      "lastAccessed": 1776126785849,
-      "type": "file"
-    },
-    {
-      "path": "README.md",
-      "accessCount": 2,
-      "lastAccessed": 1776126522256,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1776125744500,
-      "type": "directory"
-    },
-    {
-      "path": "all_reviews.json",
-      "accessCount": 1,
-      "lastAccessed": 1776125750131,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/수기집_시안.png",
-      "accessCount": 1,
-      "lastAccessed": 1776126528553,
-      "type": "file"
-    }
-  ],
+  "hotPaths": [],
   "userDirectives": []
 }
