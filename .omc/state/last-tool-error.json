@@ -1,7 +1,0 @@
-{
-  "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/kimtaeyeon/.claude/projects/-Users-kimtaeyeon-Desktop-hackers------TM/1936f87d-4fbb-4150-8d20-e530620e340c/tool-results/toolu_01Wd6ZXoZXv9qP7rmW7m7oj2.txt\"}",
-  "error": "File content (34918 tokens) exceeds maximum allowed tokens (10000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.",
-  "timestamp": "2026-04-14T00:29:27.714Z",
-  "retry_count": 7
-}
