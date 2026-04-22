@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776303390371,
+  "lastScanned": 1776842473224,
   "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
   "techStack": {
     "languages": [],
@@ -38,7 +38,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 2,
-      "lastAccessed": 1776303390367,
+      "lastAccessed": 1776842473220,
       "keyFiles": [
         "result.html",
         "survey.html"
@@ -48,7 +48,7 @@
       "path": "crawler",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1776303390367,
+      "lastAccessed": 1776842473221,
       "keyFiles": [
         "crawl_all.py",
         "crawl_finish.py",
@@ -60,7 +60,7 @@
       "path": "each_chapter_review",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776303390367,
+      "lastAccessed": 1776842473221,
       "keyFiles": [
         "chapter1_keywords.json"
       ]
@@ -68,14 +68,14 @@
     "plan&design": {
       "path": "plan&design",
       "purpose": null,
-      "fileCount": 18,
-      "lastAccessed": 1776303390368,
+      "fileCount": 32,
+      "lastAccessed": 1776842473221,
       "keyFiles": [
+        "hackers_part2.png",
+        "hackers_part3.png",
+        "hackers_part4.png",
         "hackers_stories_all6.png",
-        "수기집 설계서-2.png",
-        "수기집 설계서-4.png",
-        "수기집 설계서.png",
-        "수기집 설계서3.png"
+        "part2_본문.png"
       ]
     }
   },
