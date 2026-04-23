@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해커스공무원 2025 합격 수기집</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  background: #D5D0C6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 20px 80px;
+}
+
+/* ── Nav ── */
+.nav-wrap {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 22px;
+  position: sticky; top: 16px; z-index: 100;
+  background: rgba(213,208,198,.92);
+  backdrop-filter: blur(6px);
+  padding: 8px 18px; border-radius: 50px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+.nav-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: none; background: #3A3A3A; color: #FFF;
+  font-size: 14px; cursor: pointer; transition: background .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-btn:hover:not(:disabled) { background: #111; }
+.nav-btn:disabled { background: #B0A898; cursor: default; }
+.nav-dots { display: flex; gap: 8px; align-items: center; }
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #B0A898; cursor: pointer; transition: all .15s;
+}
+.nav-dot.active { background: #222; transform: scale(1.25); }
+.nav-lbl { font-size: 10.5px; color: #666; letter-spacing: .04em; min-width: 38px; text-align: center; }
+
+/* ── Viewer ── */
+.viewer { width: 100%; max-width: 740px; }
+
+.book-page {
+  display: none;
+  background: #FEFEFE;
+  box-shadow: 0 16px 60px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.1);
+}
+.book-page.active { display: block; }
+
+/* ── Fixed Header Bars ── */
+.ph { background: #1A1A1A; padding: 13px 32px; display: flex; justify-content: space-between; align-items: center; }
+.ph-brand { color: #FFF; font-size: 14px; font-weight: 700; letter-spacing: .05em; }
+.ph-part { color: #FFF; font-size: 10px; font-weight: 700; letter-spacing: .15em; border: 1px solid rgba(255,255,255,.55); padding: 3px 11px; }
+
+.pg { background: #C49A35; padding: 7px 32px; display: flex; justify-content: space-between; align-items: center; }
+.pg-lbl { color: #FFF; font-size: 10px; font-weight: 500; letter-spacing: .07em; }
+.pg-dash { width: 20px; height: 1px; background: rgba(255,255,255,.5); }
+
+.pb { background: #2C2C2C; padding: 7px 32px; display: flex; justify-content: space-between; align-items: center; }
+.pb span { color: #999; font-size: 9.5px; letter-spacing: .05em; }
+
+/* ── Content ── */
+.pc {
+  padding: 32px 32px 32px 44px;
+  position: relative;
+}
+.pc::before {
+  content: '';
+  position: absolute;
+  left: 18px; top: 24px; bottom: 24px;
+  width: 2px; background: #C8131F;
+}
+
+/* Tags */
+.tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag { font-size: 9.5px; font-weight: 700; padding: 3px 9px; border-radius: 1px; letter-spacing: .02em; }
+.t-red  { background: #C8131F; color: #FFF; }
+.t-gold { background: #C49A35; color: #FFF; }
+.t-gray { background: #EAEAEA; color: #444; }
+.t-dark { background: #3A3A3A; color: #FFF; }
+
+/* Title */
+.title {
+  font-size: 23px; font-weight: 900; line-height: 1.36;
+  color: #1A1A1A; margin-bottom: 12px; letter-spacing: -.02em; word-break: keep-all;
+}
+.title .hl { color: #C8131F; }
+
+/* Meta */
+.meta { font-size: 10.5px; color: #777; margin-bottom: 6px; display: flex; gap: 16px; flex-wrap: wrap; }
+.meta .my { font-weight: 700; color: #C49A35; }
+.meta .md { font-weight: 700; color: #C8131F; }
+
+.divider { width: 100%; height: 1px; background: #E8E8E8; margin: 16px 0; }
+
+/* Intro box */
+.intro-box {
+  background: #F9F8F6;
+  border-left: 3px solid #C49A35;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  font-size: 10.5px; color: #444; line-height: 1.8; word-break: keep-all;
+}
+
+/* Section */
+.sec { margin-bottom: 22px; }
+.sec-title {
+  font-size: 11.5px; font-weight: 700; color: #1A1A1A;
+  border-left: 3px solid #C8131F; padding-left: 9px;
+  margin-bottom: 12px; letter-spacing: .02em;
+}
+
+/* Body text */
+.body-text { font-size: 10.5px; color: #444; line-height: 1.85; word-break: keep-all; margin-bottom: 10px; }
+.body-text + .body-text { margin-top: -4px; }
+.body-em { font-weight: 700; color: #1A1A1A; }
+.body-red { font-weight: 700; color: #C8131F; }
+
+/* Routine */
+.routine-row {
+  display: flex; align-items: stretch;
+  background: #F9F8F6; border: 1px solid #EBEBEB;
+  margin-bottom: 10px; overflow: hidden;
+}
+.r-item { flex: 1; text-align: center; padding: 12px 6px; border-right: 1px solid #EBEBEB; }
+.r-item:last-child { border-right: none; }
+.r-time { font-size: 13px; font-weight: 800; color: #C49A35; }
+.r-lbl  { font-size: 9px; color: #888; margin-top: 2px; }
+.routine-note { font-size: 10px; color: #666; line-height: 1.6; padding: 9px 12px; background: #F4F2EE; border: 1px solid #E8E6E2; }
+
+/* Week timetable */
+.week-table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 10px; }
+.week-table th { background: #2C2C2C; color: #CCC; padding: 6px 4px; text-align: center; font-weight: 600; letter-spacing: .04em; }
+.week-table td { border: 1px solid #EBEBEB; padding: 5px 6px; text-align: center; color: #555; vertical-align: top; line-height: 1.45; }
+.week-table td.am { background: #FFFDF5; }
+.week-table td.pm { background: #F5F8FF; }
+
+/* Subject Grid */
+.sg { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.sc { background: #F9F8F6; border: 1px solid #EBEBEB; padding: 12px 13px; }
+.sc.full { grid-column: 1 / -1; }
+.sc-name { font-size: 11px; font-weight: 800; color: #1A1A1A; margin-bottom: 1px; display: flex; align-items: center; gap: 5px; }
+.sc-score { font-size: 8.5px; font-weight: 700; background: #1A1A1A; color: #FFF; padding: 1px 5px; border-radius: 2px; }
+.sc-teacher { font-size: 10.5px; font-weight: 600; color: #C8131F; margin-bottom: 6px; }
+.sc-body { font-size: 10px; color: #555; line-height: 1.6; word-break: keep-all; }
+.sc-body em { color: #C8131F; font-style: normal; font-weight: 700; }
+
+/* Tip box */
+.tip-box {
+  background: #F0F7FF; border: 1px solid #D0E4F7; border-left: 3px solid #4A90D9;
+  padding: 11px 14px; margin: 10px 0;
+  font-size: 10px; color: #444; line-height: 1.7;
+}
+.tip-box .tip-label { font-weight: 700; color: #4A90D9; margin-bottom: 4px; font-size: 10.5px; letter-spacing: .03em; }
+
+/* Quote */
+.quote {
+  background: #FDF7E8; border-left: 3px solid #C49A35;
+  padding: 16px 18px; margin-top: 4px;
+}
+.quote-text { font-size: 11px; color: #444; line-height: 1.85; font-style: italic; word-break: keep-all; }
+.q-open  { font-size: 20px; color: #C49A35; font-style: normal; font-weight: 900; vertical-align: -4px; margin-right: 1px; }
+.q-close { font-size: 20px; color: #C49A35; font-style: normal; font-weight: 900; vertical-align: -4px; margin-left: 1px; }
+
+/* Footer */
+.pf { border-top: 1px solid #E8E8E8; padding: 9px 32px; display: flex; justify-content: space-between; align-items: center; }
+.pf-brand { font-size: 9.5px; color: #AAA; letter-spacing: .06em; }
+.pf-page  { font-size: 10px; font-weight: 700; color: #C8131F; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="nav-wrap">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)">&#8592;</button>
+  <div class="nav-dots">
+    <div class="nav-dot active" onclick="goTo(0)"></div>
+    <div class="nav-dot" onclick="goTo(1)"></div>
+    <div class="nav-dot" onclick="goTo(2)"></div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)">&#8594;</button>
+  <span class="nav-lbl" id="navLbl">1 / 3</span>
+</div>
+
+<div class="viewer">
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 1  ·  no.903  ·  2024 지방직 9급 교육행정직
+     ══════════════════════════════════════════════════ -->
+<div class="book-page active" id="p0">
+  <div class="ph">
+    <span class="ph-brand">해커스공무원</span>
+    <span class="ph-part">PART 01</span>
+  </div>
+  <div class="pg">
+    <span class="pg-lbl">직렬별 합격 수기</span>
+    <span class="pg-dash"></span>
+  </div>
+  <div class="pb">
+    <span>직렬별 합격 수기 · 행정직</span>
+    <span>2024 지방직 9급 교육행정직</span>
+  </div>
+
+  <div class="pc">
+    <div class="tags">
+      <span class="tag t-red">지방직 최종합격</span>
+      <span class="tag t-gold">단기합격 3개월</span>
+      <span class="tag t-gray">교육행정직</span>
+      <span class="tag t-dark">재학 중 휴학 도전</span>
+    </div>
+
+    <h1 class="title">
+      단 3개월, 아무도 믿지 않았지만<br>
+      <span class="hl">포기하지 않아서</span> 합격했습니다
+    </h1>
+
+    <div class="meta">
+      <span>합격 시험 <span class="my">2024 지방직 9급</span></span>
+      <span>직렬 <span class="md">교육행정직</span></span>
+      <span>수험기간 <span class="my">2024. 03. 25 — 2024. 06</span></span>
+    </div>
+    <div class="divider"></div>
+
+    <!-- 시작 계기 -->
+    <div class="sec">
+      <div class="sec-title">시작 계기 &amp; 기본 베이스</div>
+      <div class="body-text">거창한 계기는 없지만 학교생활에 점점 지쳐가고 독립해서 저만의 생활을 즐겨보고 싶다는 마음에 홧김에 휴학을 하고 교육행정직에 도전한 게 3월 말쯤이었습니다. 부모님을 포함한 주변 사람들은 기간이 너무 짧다보니 처음엔 반대하셨지만 설득 끝에 허락해 주셨고, 정확히 <span class="body-em">3월 25일부터</span> 본격적으로 공부를 시작했습니다.</div>
+      <div class="tip-box">
+        <div class="tip-label">기본 베이스</div>
+        국어·영어 — 모의고사 1등급 수준, 언어 과목에 강점 보유<br>
+        한국사 — 수능 겉핥기식 1등급, 공무원 기출에서는 35점으로 시작<br>
+        교육학·행정법 — <span style="color:#C8131F;font-weight:700">완전 노베이스</span> (이번이 처음)
+      </div>
+    </div>
+
+    <!-- 루틴 -->
+    <div class="sec">
+      <div class="sec-title">하루 공부 루틴</div>
+      <div class="body-text">시간이 없다 보니 기본 1.2배속으로 아침부터 밤 늦게까지 인강만 들었습니다. 긴 인강은 아예 포기하고 행정법·한국사·교육학은 핵심요약·기본이론 강의만 딱 1번씩 수강했습니다. 전과목 인강을 마친 게 계획보다 훨씬 늦은 <span class="body-em">5월 말</span>이었고, 이후에는 무작정 풀고·채점하고·다시 풀기를 반복했습니다.</div>
+      <div class="routine-row">
+        <div class="r-item"><div class="r-time">기상</div><div class="r-lbl">아침 일찍</div></div>
+        <div class="r-item"><div class="r-time">인강</div><div class="r-lbl">1.2배속 집중</div></div>
+        <div class="r-item"><div class="r-time">기출</div><div class="r-lbl">과목별 3개년</div></div>
+        <div class="r-item"><div class="r-time">오답</div><div class="r-lbl">틀린 것 반복</div></div>
+        <div class="r-item"><div class="r-time">취침</div><div class="r-lbl">밤 늦게</div></div>
+      </div>
+      <div class="routine-note">국가직·지방직 두 시험의 기출을 최소 3개년 풀었습니다. 처음에는 국어·영어가 자신 있어 뒤로 미루고, 암기 위주인 한국사부터 시작한 것이 단기 전략의 핵심이었습니다.</div>
+    </div>
+
+    <!-- 과목별 -->
+    <div class="sec">
+      <div class="sec-title">과목별 선생님 &amp; 공부법</div>
+      <div class="sg">
+        <div class="sc">
+          <div class="sc-name">국어 <span class="sc-score">100점</span></div>
+          <div class="sc-teacher">신민숙 선생님</div>
+          <div class="sc-body">제가 가장 자신 있었던 과목입니다. 강의는 <em>문법과 어휘(사자성어·한자어) 위주</em>로만 수강했어요. 고등학생 때도 문법은 약했는데, 정말 쉽게 알려주셔서 나중에는 이야기 듣듯이 편하게 들었습니다. 문법과 한자어 문제에서 선생님 덕분에 100점을 받을 수 있었다고 생각합니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">영어 <span class="sc-score">95점</span></div>
+          <div class="sc-teacher">비비안 선생님</div>
+          <div class="sc-body">가장 마지막, 6월이 되어서야 수강을 시작했습니다. 독해는 수능 실력을 믿었고, 문법은 반쯤 포기한 채 <em>어휘 부분에서 가장 도움</em>을 받았습니다. 기출에 잘 나오고 출제율 높은 단어·표현을 집중적으로 가르쳐 주셔서 덕분에 한 개만 틀리고 95점을 받았습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">한국사 <span class="sc-score">85점</span></div>
+          <div class="sc-teacher">이명호 선생님</div>
+          <div class="sc-body">앞글자 따기, 스토리 만들기 등 <em>본인만의 암기비법</em>을 아낌없이 가르쳐 주십니다. 처음 기출에서 35점을 받고 깜짝 놀랐지만, 짧은 시간에 내용을 압축해 주셔서 단기간 수강하시는 분들께 추천합니다. 기출 병행으로 결과적으로 85점을 받았습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">행정법 <span class="sc-score">80점</span></div>
+          <div class="sc-teacher">신동욱 선생님</div>
+          <div class="sc-body">수강 시간이 비교적 짧고 그 안에 핵심을 잘 녹여내셨습니다. 실생활 예시도 들어주시고, 마지막에 해주신 격려의 말씀에 크게 힘을 얻었습니다. 인강 1회 후 기출을 풀고 틀린 부분을 반복하며 오답을 줄였습니다. <em>문제풀이 비중을 더 늘렸다면</em> 더 좋은 결과가 있었을 것 같아 아쉽습니다.</div>
+        </div>
+        <div class="sc full">
+          <div class="sc-name">교육학 <span class="sc-score">75점</span></div>
+          <div class="sc-teacher">강서연 선생님</div>
+          <div class="sc-body">인강도, 정보도 얼마 없는 소수직렬 과목이라 갈피를 잡기 어려웠습니다. <em>3배속 요약특강으로 느낌만 잡고</em> 기출을 많이 풀었습니다. 문제가 어렵게 나와 채점 시 멘탈이 흔들렸지만, 제대로 된 베이스 없이 단기간에 도전했으니 어찌 보면 당연한 결과였습니다. 세부적인 내용까지 인강에 다 나왔으니, 강의를 꼼꼼히 외워두는 것을 권합니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 슬럼프 -->
+    <div class="sec">
+      <div class="sec-title">슬럼프 &amp; 마인드 컨트롤</div>
+      <div class="body-text">제가 가장 애먹었던 부분입니다. 원체 멘탈이 잘 흔들려서 수험생활 도중 몇 번을 화내고 울었는지 모르겠어요. 기출이나 모의고사 점수 하나에 일희일비해서 감정 소모가 정말 컸습니다. 하지만 그런 와중에도 <span class="body-em">단 한 번도 그만둬야겠다는 생각은 하지 않았습니다.</span></div>
+      <div class="body-text">저는 조금 부끄럽지만 카카오톡 '나에게 채팅'으로 힘들 때마다 스스로에게 응원 문자를 보내줬어요. 학교 다닐 때는 엄두도 못 냈던 맛있는 점심도 가끔 먹으러 나갔고요. 이런 것들마저 없었다면 정말 힘들어서 포기했을지도 몰라요.</div>
+    </div>
+
+    <!-- 마지막으로 -->
+    <div class="sec">
+      <div class="sec-title">마지막으로</div>
+      <div class="body-text">공부할 때는 정말 힘들었는데, 최종합격이 나고 꽤 지난 지금 생각해보니 전부 제가 최선을 다했던 아름다운 기억이 되어 있네요. 제가 6월 시험 공부를 시작하려고 3월에 휴학했을 때 교수님의 어이없어하시던 목소리가 아직도 기억납니다. 하지만 <span class="body-em">이에 굴하지 않고 저만의 계획을 세우고 남에게 휘둘리지 않았기에</span> 지금 이렇게 글을 쓸 수 있다고 생각합니다.</div>
+      <div class="body-text">여러분도 촉박한 시간이나 주변인의 반대 등 여러 방해 요소가 있겠지만, 남에게 흔들리지 않고 본인만의 길을 가시는 게 무엇보다 중요한 것 같아요. 긴 글 읽어주셔서 감사합니다!</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        <span class="q-open">"</span>단 한 번도 포기해야겠다는 생각은 하지 않았습니다. 힘들 때마다 나에게 응원 문자를 보내며 버텼어요. 촉박한 기간, 주변의 반대가 있어도 남에게 흔들리지 않고 본인만의 길을 가는 것이 무엇보다 중요합니다.<span class="q-close">"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-brand">해커스공무원</span>
+    <span class="pf-page">P. 45</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 2  ·  no.1220  ·  2024 국가직 9급 세무직
+     ══════════════════════════════════════════════════ -->
+<div class="book-page" id="p1">
+  <div class="ph">
+    <span class="ph-brand">해커스공무원</span>
+    <span class="ph-part">PART 01</span>
+  </div>
+  <div class="pg">
+    <span class="pg-lbl">직렬별 합격 수기</span>
+    <span class="pg-dash"></span>
+  </div>
+  <div class="pb">
+    <span>직렬별 합격 수기 · 세무직</span>
+    <span>2024 국가직 9급 세무직</span>
+  </div>
+
+  <div class="pc">
+    <div class="tags">
+      <span class="tag t-red">국가직 최종합격</span>
+      <span class="tag t-gold">영포자 극복</span>
+      <span class="tag t-gray">알바 병행</span>
+      <span class="tag t-dark">특성화고 출신</span>
+    </div>
+
+    <h1 class="title">
+      that과 what의 차이도 몰랐던 영포자가<br>
+      <span class="hl">국가직 세무직에 합격</span>했습니다
+    </h1>
+
+    <div class="meta">
+      <span>합격 시험 <span class="my">2024 국가직 9급</span></span>
+      <span>직렬 <span class="md">세무직</span></span>
+      <span>수험기간 <span class="my">2023. 01 — 2024. 03 (실질 약 1년)</span></span>
+    </div>
+    <div class="divider"></div>
+
+    <!-- 기본 베이스 -->
+    <div class="sec">
+      <div class="sec-title">기본 베이스</div>
+      <div class="tip-box">
+        <div class="tip-label">과목별 시작 수준</div>
+        국어 — 어릴 때부터 책 읽기를 좋아해 자연스럽게 강점 형성<br>
+        한국사 — 흥미는 있으나 암기를 못하는 것이 평생의 약점<br>
+        영어 — <span style="color:#C8131F;font-weight:700">흔히 말하는 영포자. that과 what의 차이조차 몰랐음</span><br>
+        세법 — 접해볼 기회 없어 베이스 0<br>
+        회계학 — 특성화고(금융정보과) 전공으로 약간의 기초 보유
+      </div>
+    </div>
+
+    <!-- 루틴 -->
+    <div class="sec">
+      <div class="sec-title">합격 공부법 — 열품타와 새벽 루틴</div>
+      <div class="body-text">초반엔 스터디 플래너에 공부 계획을 세우고 시간을 기록했는데, 2023년 6월부터 <span class="body-em">열품타 앱</span>에서 공부 시간을 측정하기 시작했습니다. 세무직 준비하시는 분들이 계시는 그룹에 들어갔는데, 다들 열심히 하시는 모습을 보고 <span class="body-em">새벽 5시부터 공부를 시작</span>할 수 있는 계기가 되었고, 나중엔 순공시간 13시간도 채울 수 있었습니다. 경쟁심이 원동력이 되어서 합격을 할 수 있었어요.</div>
+      <div class="routine-row">
+        <div class="r-item"><div class="r-time">AM 5:00</div><div class="r-lbl">기상·공부 시작</div></div>
+        <div class="r-item"><div class="r-time">열품타</div><div class="r-lbl">세무직 그룹</div></div>
+        <div class="r-item"><div class="r-time">최대 13h</div><div class="r-lbl">순공시간</div></div>
+        <div class="r-item"><div class="r-time">PM 12:00</div><div class="r-lbl">취침 (수정 후)</div></div>
+      </div>
+      <div class="routine-note">⚠ 2023년 11월부터 4시간 수면 강행 → 2024년 1월 매주 병원·응급실 내원. 이후 오전 6시 기상·밤 11시 취침으로 패턴 조정. <span style="font-weight:700;color:#C8131F">공부는 하고 싶은데 몸이 안 따라줄 때 눈물만 납니다. 건강이 곧 합격 전략입니다.</span></div>
+    </div>
+
+    <!-- 과목별 -->
+    <div class="sec">
+      <div class="sec-title">과목별 선생님 &amp; 공부법</div>
+      <div class="sg">
+        <div class="sc">
+          <div class="sc-name">국어 <span class="sc-score">100점</span></div>
+          <div class="sc-teacher">신민숙 선생님</div>
+          <div class="sc-body">신민숙 선생님 커리를 그대로 따라서 들었습니다. 어법을 어렵지 않고 재밌게 설명해 주시고, 문학 시간이 오히려 기다려질 정도였습니다. 국가직 이후 <em>바뀐 출제기조에 맞춰 비문학 강의를 추가 수강</em>했고, 강의에서 배운 대로 시험장에서 그대로 사용하니 어려운 추론도 틀리지 않았습니다. 별도로 추론 문제집을 구매해 매일 풀었습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">영어 <span class="sc-score">75점 → 90점</span></div>
+          <div class="sc-teacher">비비안 선생님</div>
+          <div class="sc-body">영어는 정말 막막하고 장애물 같은 과목이었어요. 비비안 쌤 커리대로 전 강의 수강, 특강도 전부 수강했습니다. <em>단어장은 13회독</em>. 문법은 회독하다 보니 오히려 강점이 되었습니다. 국가직 후 지방직 전까지 미라클 모닝 하프 수업으로 독해를 매일 이어가 결국 <em>90점까지 점수를 끌어올렸습니다.</em> 하루 10문제씩이라도 매일 푸는 것을 추천합니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">한국사 <span class="sc-score">95점</span></div>
+          <div class="sc-teacher">이중석 선생님</div>
+          <div class="sc-body">뒤돌면 까먹는 감자인 저에게, <em>암기보다 이해를 중시하는 수업 방식</em>이 잘 맞았습니다. 1회독 부담을 덜어주셔서 2회독부터 속도가 붙었고, 시험 직전엔 1주일 안에 1회독을 할 수 있게 되었습니다. 따로 요약서는 보지 않고 블랭크 노트(기본서) 1권만 시험장 전날까지 회독했습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">세법 <span class="sc-score">80점</span></div>
+          <div class="sc-teacher">이훈엽 선생님</div>
+          <div class="sc-body">처음엔 법을 공부할 수 있을까 걱정했지만, <em>법의 취지·판례를 그림으로 설명</em>해 주셔서 어렵지 않게 공부할 수 있었습니다. 세법의 개념을 이해하고 흐름을 따라가는 방식. 기본서·기출 회독을 열심히 하고, 반복적으로 틀리는 지문은 메모장에 적어 걸어다니며 암기했습니다.</div>
+        </div>
+        <div class="sc full">
+          <div class="sc-name">회계학 <span class="sc-score">75점</span></div>
+          <div class="sc-teacher">정윤돈 선생님</div>
+          <div class="sc-body">높은 텐션으로 강의를 끌어가시고 재밌는 사례를 들어 지루하지 않고 쉽게 이해할 수 있습니다. <em>정윤돈 쌤만의 와꾸(풀이법)</em>로 시간 단축. 기출 5회독 후 모의고사 시간 체크 훈련. 올해 국가직은 말문제 비중이 높게 나와 아쉬움이 남았습니다. 계산 문제만큼 말문제도 균형 있게 준비할 것을 권합니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 면접 -->
+    <div class="sec">
+      <div class="sec-title">면접 준비</div>
+      <div class="body-text">여러 차례 공기업·은행 면접에서 탈락한 경험이 있어 정말 준비하기 힘들고 피하고 싶은 순간이었어요. <span class="body-em">피티윤 선생님</span> 강의를 들으면서 수월하게 준비할 수 있었습니다. 혼자서 했으면 해내지 못했을 것 같아요. 선생님께서 주신 자료들로 제대로 준비하시면 면접은 걱정 없을 것 같습니다.</div>
+    </div>
+
+    <!-- 수험생에게 -->
+    <div class="sec">
+      <div class="sec-title">수험생들에게 하고 싶은 말</div>
+      <div class="body-text">저는 책상 앞에 <span class="body-em">'나는 할 수 있다!', '안 되는 게 어딨어, 하면 되는 거지', 'Practice makes perfect'</span>와 같은 글을 써놓고, 공부하다 힘들 때마다 혼자 되뇌면서 마음을 다잡았어요. 꼭 자신의 편이 되어주시길 바랍니다. 운동도 하시면서 건강하게 준비하세요!</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        <span class="q-open">"</span>경쟁심이 원동력이었습니다. 남들이 열심히 하는 모습을 보며 새벽 5시부터 책상에 앉을 수 있었어요. 단, 공부는 하고 싶은데 몸이 안 따라줄 때 눈물만 납니다. 건강 챙기시면서 꼭 합격하시길 바랍니다.<span class="q-close">"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-brand">해커스공무원</span>
+    <span class="pf-page">P. 52</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     PAGE 3  ·  no.1748  ·  2023 지방직 9급 사회복지직
+     ══════════════════════════════════════════════════ -->
+<div class="book-page" id="p2">
+  <div class="ph">
+    <span class="ph-brand">해커스공무원</span>
+    <span class="ph-part">PART 01</span>
+  </div>
+  <div class="pg">
+    <span class="pg-lbl">직렬별 합격 수기</span>
+    <span class="pg-dash"></span>
+  </div>
+  <div class="pb">
+    <span>직렬별 합격 수기 · 사회복지직</span>
+    <span>2023 지방직 9급 사회복지직</span>
+  </div>
+
+  <div class="pc">
+    <div class="tags">
+      <span class="tag t-red">지방직 최종합격</span>
+      <span class="tag t-gold">41세 맘시생</span>
+      <span class="tag t-gray">12년 주부 경력</span>
+      <span class="tag t-dark">노베이스 5과목</span>
+    </div>
+
+    <h1 class="title">
+      아이 둘 키우는 41살 주부,<br>
+      <span class="hl">1년 9개월 만에</span> 합격의 문을 열었습니다
+    </h1>
+
+    <div class="meta">
+      <span>합격 시험 <span class="my">2023 지방직 9급</span></span>
+      <span>직렬 <span class="md">사회복지직</span></span>
+      <span>수험기간 <span class="my">2021. 09. 01 — 2023. 06. 10 (순공 1년 4개월)</span></span>
+    </div>
+    <div class="divider"></div>
+
+    <!-- 시작 계기 -->
+    <div class="sec">
+      <div class="sec-title">준비 계기 &amp; 기본 베이스</div>
+      <div class="body-text">저는 15년 전쯤 3년간 일을 한 경력이 있고, 결혼 이후로는 주부이자 엄마로 12년을 지냈습니다. 40년 가까이 살던 고향을 갑자기 떠나게 되었고, 새로운 도시에서 새로운 인생을 계획해야 했습니다. <span class="body-em">누군가의 아내이자 엄마가 아닌 나만의 삶을 준비해야겠다</span>는 생각이 들었고, 경력도 없고 전문 기술도 없는 상황에서 가장 공정하고 기회가 열려 있는 공무원에 도전하게 되었습니다.</div>
+      <div class="tip-box">
+        <div class="tip-label">기본 베이스</div>
+        한국사능력검정시험 1급 보유<br>
+        국어·영어·행정법·사회복지학 — <span style="color:#C8131F;font-weight:700">완전 노베이스 (대학 졸업 후 20년 가까이 공백)</span><br>
+        특이사항 — 초등생 자녀 2명을 둔 맘시생 (하교 케어 포함한 루틴 설계 필요)
+      </div>
+    </div>
+
+    <!-- 루틴 -->
+    <div class="sec">
+      <div class="sec-title">맘시생 하루 루틴 — 순공 약 9시간</div>
+      <div class="routine-row">
+        <div class="r-item"><div class="r-time">07:30</div><div class="r-lbl">기상</div></div>
+        <div class="r-item"><div class="r-time">09:00</div><div class="r-lbl">공부 시작</div></div>
+        <div class="r-item"><div class="r-time">13:30</div><div class="r-lbl">아이 하교·케어</div></div>
+        <div class="r-item"><div class="r-time">17:00</div><div class="r-lbl">공부 재개</div></div>
+        <div class="r-item"><div class="r-time">01:30</div><div class="r-lbl">취침</div></div>
+      </div>
+      <div class="routine-note">이론 약 4시간 + 복습 약 4시간 루틴 유지. <span style="font-weight:700">당일 수업, 당일 복습</span>을 철칙으로 삼아 5과목 전부 복습 공백 없이 이어감. 아이들 케어 시간(점심 이후 ~5시)은 집중이 어려워 쉬는 시간으로 활용.</div>
+      <br>
+      <div class="body-text">일반 학생들과 달리, 명절이나 집안 행사 때 타 지역 부모님 댁에 4~5일 이상 머물러야 했어요. 그래도 <span class="body-em">하루에 한 과목이라도 꾸역꾸역</span> 수업을 들었습니다. 그래야 다음 날 책상 앞에 앉을 생각이 들더라고요.</div>
+    </div>
+
+    <!-- 과목별 -->
+    <div class="sec">
+      <div class="sec-title">과목별 선생님 &amp; 공부법</div>
+      <div class="sg">
+        <div class="sc">
+          <div class="sc-name">국어 <span class="sc-score">95점</span></div>
+          <div class="sc-teacher">신민숙 선생님</div>
+          <div class="sc-body"><em>신민숙이라 쓰고 문법의 여왕이라 읽습니다.</em> 열정적이고 쉽고 반복적으로 설명해 주셔서 따라가기 쉬웠고, 특화된 암기법이 머리에 쏙쏙 박혔습니다. 240제는 챕터별로 3문제씩 모의고사 느낌으로, 비문학 333제는 매일 3문제씩 읽고 풀기 연습. 기본강의·문법심화·기출·모의고사를 순서대로 완료했습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">한국사 <span class="sc-score">95점</span></div>
+          <div class="sc-teacher">이중석 선생님</div>
+          <div class="sc-body">길고 힘든 수험생활을 버티게 해 주신 선생님입니다. <em>스토리 형식으로 이해 중심</em>의 수업이라 암기가 약한 저에게 너무나 잘 맞았어요. 수업이 정말 재미있어서 웃을 일이 별로 없는 수험 기간 동안 선생님 덕분에 많이 웃었고, 한국사 들을 날을 기다리며 다른 과목도 버틸 수 있었습니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">행정법 <span class="sc-score">95점</span></div>
+          <div class="sc-teacher">장재혁 선생님</div>
+          <div class="sc-body">효율을 추구하시는 수업. 중요한 것이 무엇인지, 문제는 어떻게 풀어야 하는지 핵심을 잘 짚어주십니다. <em>기본 2회독</em>을 강조하시는데, 버티다가 다시 1회독하니 두루뭉술했던 내용들이 쫙 정리되는 효과가 있었습니다. 뭔 소리인지 몰라도 선생님 커리대로 따라가면 효자 과목이 됩니다.</div>
+        </div>
+        <div class="sc">
+          <div class="sc-name">사회복지학 <span class="sc-score">100점</span></div>
+          <div class="sc-teacher">박정훈 선생님</div>
+          <div class="sc-body">낯선 용어와 학자들의 이름으로 흥미가 안 생기는 과목인데, 전공자가 아니어도 이해하기 쉽게 설명해 주십니다. <em>처음엔 황당했던 두문자 암기법</em>이 신기하게도 머릿속에 쏙 박혔습니다. 기본이론 → 단끝사 → 기출 2회독 순서로 진행했습니다.</div>
+        </div>
+        <div class="sc full">
+          <div class="sc-name">영어 <span class="sc-score">65점</span></div>
+          <div class="sc-teacher">김송희 선생님</div>
+          <div class="sc-body">완전 기초인 분들께 강력 추천합니다. 수업이 깔끔하고 아주 쉽게, 반복적으로 진행됩니다. 문법을 확실히 잡아주십니다. 다만 저의 경우 공백기(약 5개월)로 영어를 놓게 되어 65점에 머물렀습니다. 막판 2달 전 영어가 과락 위기에 처해, STEP4를 주 3회 + 하프 매일 풀기로 벼락치기해 가까스로 탈출했습니다. <em>영어는 절대 감을 놓지 마세요.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 슬럼프 -->
+    <div class="sec">
+      <div class="sec-title">슬럼프 극복</div>
+      <div class="body-text">기본이론 5과목을 완강하는 데 5개월이 걸렸고, 이후 명절과 집 이사 등이 겹쳐 슬럼프가 왔습니다. 그래도 공부의 흐름이 완전히 끊기지 않도록 하루에 한 과목이라도 수업을 들었어요. 그래야 다음 날 책상 앞에 앉을 생각이 드니까요.</div>
+      <div class="body-text">마음이 헤이해질 때면 <span class="body-em">처음 시작할 때의 독기를 곱씹었습니다.</span> 서러움과 독기가 수험 기간 마지막까지 저를 이끌어 주었어요.</div>
+    </div>
+
+    <!-- 꿀팁 -->
+    <div class="sec">
+      <div class="sec-title">암기법 &amp; 합격 꿀팁</div>
+      <div class="tip-box">
+        <div class="tip-label">나만의 암기법</div>
+        선생님들이 알려주신 두문자 암기법이 가장 머릿속에 잘 들어옵니다.<br>
+        <strong>초등학생이 앞에 앉아있다 생각하고 강의하듯 입으로 설명하기</strong> — 4과목(영어 제외) 동일하게 적용. 스스로 정리해 말로 내뱉으면 각인과 복습 효과가 동시에 납니다.<br>
+        영어 단어는 깜지 대신 <strong>동네 한 바퀴 돌면서 노랭이 앱으로 반복 청취</strong> — 저녁 요리하면서도 앱 틀어놓고 당일 단어 반복.
+      </div>
+      <div class="body-text">지방직 앞두고는 봉투 모의고사 문제지를 과목별로 구매해 학원 시행 모의고사 외에도 개인적으로 5과목 문제를 모아 타이머를 맞춰놓고 실전처럼 풀었습니다.</div>
+    </div>
+
+    <!-- 마지막으로 -->
+    <div class="sec">
+      <div class="sec-title">마지막으로</div>
+      <div class="body-text">공시는 결국 자기와의 싸움인 것 같아요. 1년이든 2년이든 <span class="body-em">오늘 하루 타협하지 않는 것</span>, 이 하루가 쌓이다 보면 합격이라는 결과를 얻을 수 있습니다. 그리고 중요한 것은 선생님을 잘 만나야 한다는 것입니다. 저는 해커스에서 5과목 선생님 모두 너무 훌륭한 분들을 만났고, 과목에 대한 전문성은 물론 학생들을 향한 애정도 온라인이지만 많이 느낄 수 있었습니다.</div>
+      <div class="body-text">특히 행정법이나 전공과목은 선생님을 잘 만나야 합니다. 샘플 강의를 꼭 들어보시고 선택하세요. 오늘도 묵묵히 길을 걷고 계시는 수험생 분들 모두 파이팅입니다. 저도 했으니 여러분들은 당연히 하실 수 있습니다!</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        <span class="q-open">"</span>공시는 결국 자기와의 싸움입니다. 오늘 하루 타협하지 않는 것, 이 하루가 쌓이다 보면 합격이라는 결과를 얻을 수 있어요. 저도 했으니 여러분들은 당연히 하실 수 있습니다.<span class="q-close">"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span class="pf-brand">해커스공무원</span>
+    <span class="pf-page">P. 68</span>
+  </div>
+</div>
+
+</div><!-- /viewer -->
+
+<script>
+let cur = 0;
+const total = 3;
+
+function go(d) { goTo(cur + d); }
+
+function goTo(i) {
+  i = Math.max(0, Math.min(total - 1, i));
+  document.getElementById('p' + cur).classList.remove('active');
+  document.querySelectorAll('.nav-dot')[cur].classList.remove('active');
+  cur = i;
+  document.getElementById('p' + cur).classList.add('active');
+  document.querySelectorAll('.nav-dot')[cur].classList.add('active');
+  document.getElementById('prevBtn').disabled = cur === 0;
+  document.getElementById('nextBtn').disabled = cur === total - 1;
+  document.getElementById('navLbl').textContent = (cur + 1) + ' / ' + total;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  go(-1);
+  if (e.key === 'ArrowRight') go(1);
+});
+
+goTo(0);
+</script>
+</body>
+</html>
