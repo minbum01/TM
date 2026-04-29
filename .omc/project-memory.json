@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776842473224,
+  "lastScanned": 1777452618833,
   "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
   "techStack": {
     "languages": [],
@@ -38,7 +38,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 2,
-      "lastAccessed": 1776842473220,
+      "lastAccessed": 1777452618829,
       "keyFiles": [
         "result.html",
         "survey.html"
@@ -48,7 +48,7 @@
       "path": "crawler",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1776842473221,
+      "lastAccessed": 1777452618829,
       "keyFiles": [
         "crawl_all.py",
         "crawl_finish.py",
@@ -60,16 +60,27 @@
       "path": "each_chapter_review",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1776842473221,
+      "lastAccessed": 1777452618829,
       "keyFiles": [
         "chapter1_keywords.json"
+      ]
+    },
+    "metadata": {
+      "path": "metadata",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1777452618830,
+      "keyFiles": [
+        "metasource_categorized.json",
+        "metasource_list.json",
+        "metasource_report.html"
       ]
     },
     "plan&design": {
       "path": "plan&design",
       "purpose": null,
       "fileCount": 32,
-      "lastAccessed": 1776842473221,
+      "lastAccessed": 1777452618830,
       "keyFiles": [
         "hackers_part2.png",
         "hackers_part3.png",
@@ -79,49 +90,6 @@
       ]
     }
   },
-  "hotPaths": [
-    {
-      "path": "수기집_예시.html",
-      "accessCount": 6,
-      "lastAccessed": 1776909160485,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/수기집_앞표지의뒷페이지.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903658230,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/part2_표지.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903662710,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/part2_본문.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903662923,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/part3_표지.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903669211,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/part3_본문.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903669476,
-      "type": "file"
-    },
-    {
-      "path": "plan&design/part4_본문.png",
-      "accessCount": 1,
-      "lastAccessed": 1776903669689,
-      "type": "file"
-    }
-  ],
+  "hotPaths": [],
   "userDirectives": []
 }
