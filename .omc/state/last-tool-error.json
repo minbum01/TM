@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"npx playwright screenshot --browser chromium --full-page --viewport-size \\\"1760,1620\\\" \\\"file://$(pwd)/toc_export.html\\\" toc_page.png 2>&1\",\"timeout\":60000,\"description\":\"Screenshot HTML w...",
+  "error": "Exit code 1\nnpm warn exec The following package was not found and will be installed: playwright@1.60.0\nError: command.parse: Executable doesn't exist at /Users/kimtaeyeon/Library/Caches/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-mac-arm64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                           ...",
+  "timestamp": "2026-06-02T00:06:59.229Z",
+  "retry_count": 2
+}

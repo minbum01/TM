@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>목차 페이지</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: #CEC9BE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.spread {
+  display: flex;
+  width: 1680px;
+  height: 1520px;
+  box-shadow: 0 32px 120px rgba(0,0,0,.3);
+}
+
+/* ── 왼쪽 페이지 (표지 연장) ── */
+.page-left {
+  width: 840px;
+  height: 1520px;
+  background: #F5F2EC;
+  border-right: 2px solid #D0CBC0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ph-left {
+  background: #1A1A1A;
+  padding: 18px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.ph-brand {
+  color: #FFF;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.ph-brand span { color: #C49A35; }
+.ph-badge {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  border: 1.5px solid rgba(255,255,255,.5);
+  padding: 4px 14px;
+}
+
+.pg-left {
+  background: #C49A35;
+  padding: 10px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.pg-lbl { color: #FFF; font-size: 17px; font-weight: 500; letter-spacing: .07em; }
+.pg-dash { width: 32px; height: 1.5px; background: rgba(255,255,255,.5); }
+
+.left-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 36px 60px 36px;
+}
+
+.left-year {
+  font-size: 26px;
+  font-weight: 300;
+  color: #888;
+  letter-spacing: .1em;
+  margin-bottom: 18px;
+}
+
+.left-title {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #1A1A1A;
+  letter-spacing: -.02em;
+  word-break: keep-all;
+  margin-bottom: 24px;
+}
+.left-title .red { color: #C8131F; }
+
+.left-rule {
+  width: 40px;
+  height: 3px;
+  background: #C8131F;
+  margin-bottom: 28px;
+}
+
+.left-count {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: auto;
+}
+.count-num {
+  font-size: 52px;
+  font-weight: 900;
+  color: #1A1A1A;
+  line-height: 1;
+}
+.count-lbl {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 8px;
+}
+.left-badge-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: auto;
+}
+.lbs {
+  background: #1A1A1A;
+  color: #FFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  letter-spacing: .04em;
+  text-align: center;
+}
+.lbs.gold { background: #C49A35; }
+
+/* ── 오른쪽 페이지 (목차) ── */
+.page-right {
+  width: 840px;
+  height: 1520px;
+  background: #FEFEFE;
+  display: flex;
+  flex-direction: column;
+}
+
+.ph-right {
+  background: #1A1A1A;
+  padding: 18px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pg-right {
+  background: #C49A35;
+  padding: 10px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.toc-body {
+  flex: 1;
+  padding: 52px 52px 36px 52px;
+  overflow: hidden;
+}
+
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 44px;
+  border-bottom: 2px solid #1A1A1A;
+  padding-bottom: 16px;
+}
+.toc-title {
+  font-size: 38px;
+  font-weight: 900;
+  color: #1A1A1A;
+  letter-spacing: -.01em;
+}
+.toc-en {
+  font-size: 13px;
+  font-weight: 700;
+  color: #C8131F;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.part-block {
+  margin-bottom: 32px;
+}
+
+.part-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.part-num {
+  background: #1A1A1A;
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 12px;
+  letter-spacing: .12em;
+}
+.part-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1A1A1A;
+  letter-spacing: -.01em;
+}
+
+.toc-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 4px;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #F0EDED;
+}
+.toc-item:last-child { border-bottom: none; }
+
+.toc-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #C8131F;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.toc-item-text {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.toc-item-text em {
+  font-style: normal;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.toc-dots-line {
+  flex: 1;
+  border-bottom: 1px dotted #CCC;
+  margin: 0 12px;
+  min-width: 20px;
+}
+
+.toc-page {
+  font-size: 14px;
+  font-weight: 700;
+  color: #C8131F;
+  flex-shrink: 0;
+  min-width: 28px;
+  text-align: right;
+}
+
+.part-divider {
+  width: 100%;
+  height: 1px;
+  background: #EAEAEA;
+  margin: 4px 0 0 0;
+}
+</style>
+</head>
+<body>
+<div class="spread">
+
+  <!-- 왼쪽 페이지 -->
+  <div class="page-left">
+    <div class="ph-left">
+      <span class="ph-brand">해커스공무원</span>
+      <span class="ph-badge">OFFICIAL GUIDE</span>
+    </div>
+    <div class="pg-left">
+      <span class="pg-lbl">2026 합격 수기집</span>
+      <span class="pg-dash"></span>
+    </div>
+    <div class="left-body">
+      <div class="left-year">2 0 2 6</div>
+      <div class="left-title">합격의 길,<br><span class="red">그들의 이야기</span></div>
+      <div class="left-rule"></div>
+      <div style="font-size:18px; color:#666; line-height:1.7; word-break:keep-all; margin-bottom:60px;">
+        해커스공무원 수강생들이 직접 전하는<br>생생한 합격 수기 모음집
+      </div>
+      <div class="left-count">
+        <div>
+          <div style="font-size:14px;color:#888;margin-bottom:6px;">수록 수기 편수</div>
+          <div style="display:flex;align-items:flex-end;gap:6px;">
+            <span class="count-num">50<span style="color:#C8131F">+</span></span>
+          </div>
+        </div>
+        <div class="left-badge-stack">
+          <div class="lbs">HACKERS</div>
+          <div class="lbs">합격</div>
+          <div class="lbs gold">수기집</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오른쪽 페이지 (목차) -->
+  <div class="page-right">
+    <div class="ph-right">
+      <span class="ph-brand">해커스공무원</span>
+      <span class="ph-badge">OFFICIAL GUIDE</span>
+    </div>
+    <div class="pg-right">
+      <span class="pg-lbl">2026 합격 수기집</span>
+      <span class="pg-dash"></span>
+    </div>
+
+    <div class="toc-body">
+      <div class="toc-header">
+        <span class="toc-title">목차</span>
+        <span class="toc-en">TABLE OF CONTENTS</span>
+      </div>
+
+      <!-- PART 01 -->
+      <div class="part-block">
+        <div class="part-label">
+          <span class="part-num">PART 01</span>
+          <span class="part-name">키워드별 합격 수기</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text"><em>맘시생</em> — 지방직 9급 도시계획직</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">12</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text"><em>직장인</em> — 국가직 7급 행정직</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">18</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text"><em>휴학생</em> — 국가직 7급 관세직</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">24</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text"><em>늦깍이 준비생</em> — 지방직 9급 시설직</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">30</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part-divider"></div>
+
+      <!-- PART 02 -->
+      <div class="part-block" style="margin-top:24px;">
+        <div class="part-label">
+          <span class="part-num">PART 02</span>
+          <span class="part-name">직렬별 합격 수기</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">행정직 — 국가직 7급 동동합격</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">42</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">기계직 — 지방직 9급 공업직 합격</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">50</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">건축직 — 서울시 7급 합격</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">56</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">관세직 — 국가직 7급 합격</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">62</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">교정직 — 국가직 7급 합격</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">68</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part-divider"></div>
+
+      <!-- PART 03 (다관왕) -->
+      <div class="part-block" style="margin-top:24px;">
+        <div class="part-label">
+          <span class="part-num">PART 03</span>
+          <span class="part-name">다관왕 합격 이야기</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">국가직·지방직 동시 합격의 전략</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">80</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">서울시·국가직 7급 동기 동시 통과</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">86</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part-divider"></div>
+
+      <!-- PART 04 (과목별) -->
+      <div class="part-block" style="margin-top:24px;">
+        <div class="part-label">
+          <span class="part-num">PART 04</span>
+          <span class="part-name">과목별 합격 공부방법</span>
+        </div>
+        <div class="toc-items">
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">국어 — 판법부터 빈칸까지 전략 정리</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">98</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">영어 — 영어이기야도 합격하는 루틴</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">104</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">한국사 — 강사 커리큘럼 100% 활용법</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">110</div>
+          </div>
+          <div class="toc-item">
+            <div class="toc-dot"></div>
+            <div class="toc-item-text">PSAT — 언어·자료·상황 영역별 공략</div>
+            <div class="toc-dots-line"></div>
+            <div class="toc-page">116</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
