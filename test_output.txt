@@ -1,6 +1,0 @@
-CLAUDECODE in env: True
-Testing claude CLI...
-returncode: 0
-stdout: 2
-
-stderr: 
