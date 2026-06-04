@@ -128,9 +128,15 @@
   },
   "hotPaths": [
     {
+      "path": "make_excel.py",
+      "accessCount": 10,
+      "lastAccessed": 1780564707612,
+      "type": "file"
+    },
+    {
       "path": "selected_reviews_txt/PART1_100인_사람키워드.txt",
-      "accessCount": 1,
-      "lastAccessed": 1780535073352,
+      "accessCount": 2,
+      "lastAccessed": 1780563986621,
       "type": "file"
     }
   ],
