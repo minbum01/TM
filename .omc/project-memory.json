@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780358565743,
+  "lastScanned": 1780534946619,
   "projectRoot": "/Users/kimtaeyeon/Desktop/hackers/합격수기/TM",
   "techStack": {
     "languages": [],
@@ -34,11 +34,21 @@
   },
   "customNotes": [],
   "directoryMap": {
+    "260602보고": {
+      "path": "260602보고",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1780534946614,
+      "keyFiles": [
+        "목차예시_보고용.html",
+        "수기집_예시.html"
+      ]
+    },
     "app": {
       "path": "app",
       "purpose": "Application code",
       "fileCount": 2,
-      "lastAccessed": 1780358565736,
+      "lastAccessed": 1780534946614,
       "keyFiles": [
         "result.html",
         "survey.html"
@@ -48,7 +58,7 @@
       "path": "crawler",
       "purpose": null,
       "fileCount": 4,
-      "lastAccessed": 1780358565736,
+      "lastAccessed": 1780534946614,
       "keyFiles": [
         "crawl_all.py",
         "crawl_finish.py",
@@ -60,7 +70,7 @@
       "path": "each_chapter_review",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1780358565736,
+      "lastAccessed": 1780534946615,
       "keyFiles": [
         "chapter1_keywords.json"
       ]
@@ -69,7 +79,7 @@
       "path": "korean_study_methods",
       "purpose": null,
       "fileCount": 7,
-      "lastAccessed": 1780358565736,
+      "lastAccessed": 1780534946615,
       "keyFiles": [
         "KOR_01_행정직_지방직9급_상세.txt",
         "KOR_02_행정직_서울시9급_50대명퇴자.txt",
@@ -82,7 +92,7 @@
       "path": "metadata",
       "purpose": null,
       "fileCount": 3,
-      "lastAccessed": 1780358565737,
+      "lastAccessed": 1780534946615,
       "keyFiles": [
         "metasource_categorized.json",
         "metasource_list.json",
@@ -93,7 +103,7 @@
       "path": "plan&design",
       "purpose": null,
       "fileCount": 32,
-      "lastAccessed": 1780358565737,
+      "lastAccessed": 1780534946616,
       "keyFiles": [
         "hackers_part2.png",
         "hackers_part3.png",
@@ -106,7 +116,7 @@
       "path": "selected_reviews_txt",
       "purpose": null,
       "fileCount": 11,
-      "lastAccessed": 1780358565737,
+      "lastAccessed": 1780534946616,
       "keyFiles": [
         "PART1_100인_사람키워드.txt",
         "PART2_01_간호보건직_경단녀주부.txt",
@@ -118,27 +128,9 @@
   },
   "hotPaths": [
     {
-      "path": "260602보고/수기집_예시.html",
-      "accessCount": 13,
-      "lastAccessed": 1780361319208,
-      "type": "file"
-    },
-    {
-      "path": "toc_export.html",
-      "accessCount": 5,
-      "lastAccessed": 1780358940000,
-      "type": "file"
-    },
-    {
-      "path": "수기집_예시.html",
-      "accessCount": 4,
-      "lastAccessed": 1780358590745,
-      "type": "file"
-    },
-    {
-      "path": "toc_page.png",
-      "accessCount": 2,
-      "lastAccessed": 1780358955663,
+      "path": "selected_reviews_txt/PART1_100인_사람키워드.txt",
+      "accessCount": 1,
+      "lastAccessed": 1780535073352,
       "type": "file"
     }
   ],
